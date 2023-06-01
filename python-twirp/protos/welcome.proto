@@ -1,0 +1,23 @@
+syntax = "proto3";
+package twirp.fastapi.demo;
+
+// The objects passed as param and the ones returned must be defined
+message Name {
+  string firstname = 1; // must be > 0
+  string lastname = 2;
+}
+
+// The Result object will return with a message.
+message Result {
+  string message = 2; 
+}
+
+service Welcome {
+  // SayHello takes in an object Name returns object Result
+  rpc SayHello(Name) returns (Result);
+}
+
+service Farewell {
+  // SayBye takes in an object Name returns object Result
+  rpc SayBye(Name) returns (Result);
+}
